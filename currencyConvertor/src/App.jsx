@@ -24,14 +24,14 @@ const convert =() => {
 
 return (
    <div
-            className="min-h-screen  bg-cover bg-center  flex items-center justify-center"
+            className="min-h-screen  bg-cover bg-center  flex items-center justify-center  "
   style={{
-                backgroundImage: `url('https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg')`,
+               backgroundImage: `url('https://t3.ftcdn.net/jpg/01/93/30/78/360_F_193307850_Ohzn4ILra9FbnqNaEgR0Dz0iprl0crJr.jpg')`,
             }}
         >
            
-                <div className=" backdrop-blur-sm rounded-lg p-6 w-[90%] max-w-md shadow-lg ">
-
+                <div className=" backdrop-blur-lg rounded-lg p-6 w-[90%] max-w-md shadow-lg ">
+                        <h1 className=" text-white text-2xl font-bold text-center mb-4">Currency Converter</h1>
                     <form
                         onSubmit={(e) => {
                             e.preventDefault();
@@ -53,7 +53,7 @@ return (
                         <div className="relative w-full h-0.5 ">
                             <button
                                 type="button"
-                                className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-white rounded-md bg-gray-700 text-white px-2 py-0.5 "
+                                className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-white rounded-md bg-gray-700 hover:bg-gray-800 text-white px-2 py-0.5 "
                                 onClick={swap}
                             >
                                 swap
@@ -70,12 +70,25 @@ return (
                                   setTo(currency)}
                                 amountDisable
                             />
-                        </div>
-                        <button type="submit"
-                         className="w-full bg-gray-700
-                          text-white px-4 py-3 rounded-lg">
-                            Convert {from.toUpperCase() } to {to.toUpperCase()}
+                              </div>
+                            {currencyInfo[to] && (
+                            <div className="text-center text-md p-2  text-white mb-2">
+                                <p>1 {from.toUpperCase()} = {currencyInfo[to]} {to.toUpperCase()}</p>
+                                {amount > 0 && (
+                                <p>{amount} {from.toUpperCase()} = {(amount * currencyInfo[to]).toFixed(4)} {to.toUpperCase()}</p>
+                                )}
+                            </div>
+                            )}
+
+                       
+                        <button
+                        type="submit"
+                        className="w-full bg-gray-700 hover:bg-gray-800 transition-all duration-300 text-white px-4 py-3 rounded-lg font-semibold"
+                        >
+                        Convert {from.toUpperCase()} to {to.toUpperCase()}
                         </button>
+
+
                     </form>
                 </div>
             </div>
